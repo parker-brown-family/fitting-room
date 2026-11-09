@@ -88,11 +88,18 @@ was running three other evaluations then. Re-run one task at a time, holding the
 
 ## What is left
 
-On the three valid tasks both arms pass everything, as on HC Video. The fitted arm cost less on
-all three pairs ($0.270 against $0.370 in total) and on the fourth, invalid one, though three
-pairs cannot show a difference in anything. Terminal Delight's mined tasks name their failing
-test in the prompt, which puts them within reach of a frontier model without help.
+A second oracle re-run, on the history-free workspaces adopted the same morning (amendment 11),
+removed one more task: the surface-write task passes untouched there. Its earlier untouched
+failure was a test that could not write a file in the cloned workspace, an environment fault
+rather than the missing change. It joins the bench check in `evals/terminal-delight/invalid.jsonl`.
+
+That leaves two valid tasks, the Chromium sandbox skip and the closed pipe. Both arms pass both,
+and the fitted arm cost less on each ($0.071 against $0.117, and $0.074 against $0.077). Two pairs
+cannot show a difference in anything, and the run registered for these tasks (td-v2) was not
+started: two tasks would not have bought a result worth the build time.
 
 The lasting result from this project is about the instrument. A harness eval is a second harness,
-and it needs the same isolation it gives the agents: two trials that share a writable cache are
-not independent, and nothing in either trial's own record shows it.
+and it needs the same isolation it gives the agents. Two trials that share a writable cache are
+not independent, a workspace that keeps git history holds the answer, and a test that fails for
+an environmental reason looks exactly like one that fails for the missing change. Nothing in a
+single trial's record shows any of the three.
