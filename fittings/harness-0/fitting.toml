@@ -1,0 +1,79 @@
+name = "harness-0"
+version = 1
+root = "~/Work/harness-0"
+about = "harness-0 (h0) is a security-first, project-fitted coding-agent harness in pure-stdlib Python, with an evaluation framework that tests whether fitting helps."
+
+[checks.tests]
+run = "python3 -P -m unittest discover -s tests -t ."
+cwd = "."
+about = "Full offline unittest suite including sandbox security tests"
+timeout = 600
+
+[checks.security]
+run = "python3 -P -m unittest discover -s tests -t . -p test_security.py"
+cwd = "."
+about = "Sandbox, policy, redaction and tool security floor tests"
+timeout = 300
+
+[checks.loop]
+run = "python3 -P -m unittest discover -s tests -t . -p test_loop.py"
+cwd = "."
+about = "Agent loop tests with fake provider"
+timeout = 180
+
+[checks.no-deps]
+run = "grep -Eq '^dependencies = \\[\\]$' pyproject.toml && ! grep -rEn '^\\s*(import|from)\\s+(requests|httpx|pytest|yaml|anthropic|openai|tomli)\\b' h0 tests evals --include=*.py"
+cwd = "."
+about = "Dependency list empty; no third-party imports"
+timeout = 20
+
+[checks.syntax]
+run = "python3 -c \"import ast,pathlib,sys; [ast.parse(p.read_text(), str(p)) for d in ('h0','tests','evals') for p in pathlib.Path(d).rglob('*.py')]\""
+cwd = "."
+about = "Parse all Python files without writing bytecode"
+timeout = 30
+
+[[triggers]]
+id = "security-edit"
+on = "after:edit"
+match = "(^|/)h0/(sandbox|policy|redact|tools)\\.py$"
+action = "require"
+check = "security"
+note = "Security code changed: add a regression test in tests/ that tries to break this change, then run it."
+
+[[triggers]]
+id = "security-write"
+on = "after:write"
+match = "(^|/)h0/(sandbox|policy|redact|tools)\\.py$"
+action = "require"
+check = "security"
+note = "Security code rewritten: add a regression test in tests/ that tries to break it."
+
+[[triggers]]
+id = "prereg-write"
+on = "before:write"
+match = "(^|/)evals/PREREG\\.md$"
+action = "block"
+note = "PREREG.md is a pre-registration: never rewrite it. Append an amendment with edit instead."
+
+[[triggers]]
+id = "prereg-edit"
+on = "before:edit"
+match = "(^|/)evals/PREREG\\.md$"
+action = "inject"
+note = "Append amendments only at the end; never alter earlier text. Timestamp = git commit time."
+
+[[triggers]]
+id = "commit"
+on = "before:bash"
+match = "\\bgit\\s+commit\\b"
+action = "require"
+check = "tests"
+note = "Run the full suite first. Message: three paragraphs (state, problem, approach), no AI attribution."
+
+[[triggers]]
+id = "no-key"
+on = "before:bash"
+match = "secret-tool|keyring|ANTHROPIC_API_KEY|\\bh0\\s+(eval|learn|fit)\\b"
+action = "block"
+note = "Never touch the API key; h0 eval/learn/fit call real models (networked, costly)."

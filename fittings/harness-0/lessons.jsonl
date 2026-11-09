@@ -1,0 +1,6 @@
+{"id": "L1", "text": "Unknown is not zero: a measurement not taken is None, never 0, in code, stats, JSON and results docs.", "helpful": 0, "harmful": 0, "source": "fit"}
+{"id": "L2", "text": "Stdlib only: the empty dependency list is a security property. Use unittest, not pytest; no third-party imports anywhere.", "helpful": 0, "harmful": 0, "source": "fit"}
+{"id": "L3", "text": "Any change to sandbox.py, policy.py, redact.py or tools.py ships with a test in tests/ that attempts to break it.", "helpful": 0, "harmful": 0, "source": "fit"}
+{"id": "L4", "text": "evals/PREREG.md is append-only: add amendments at the end, timestamped with their git commit time.", "helpful": 0, "harmful": 0, "source": "fit"}
+{"id": "L5", "text": "Rule of two: a session may never hold sensitive data and network access at once. Don't weaken the sandbox to make a test pass.", "helpful": 0, "harmful": 0, "source": "fit"}
+{"id": "L6", "text": "Eval results in runs/ are evidence; correct them only via a documented rescore keeping the original, never by hand-editing.", "helpful": 0, "harmful": 0, "source": "fit"}

@@ -1,0 +1,5 @@
+#!/bin/sh
+# -P keeps the working directory off sys.path, so a project's own h0.py or json.py
+# cannot shadow the harness when it runs inside that project.
+here="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+PYTHONPATH="$here" exec python3 -P -m h0 "$@"

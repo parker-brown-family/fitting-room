@@ -1,0 +1,12 @@
+
+# brief.py keeps a backup of the page each time it rebuilds; the source and git history are enough
+docs/brief/*.bak
+.env
+.env.*
+!.env.example
+/evals/results/raw/
+.h0-scratch/
+*.pyc
+__pycache__/
+/runs/
+runs/

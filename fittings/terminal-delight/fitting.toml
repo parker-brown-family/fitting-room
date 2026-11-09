@@ -1,0 +1,99 @@
+name = "terminal-delight"
+version = 1
+root = "~/Work/terminal-delight"
+about = "Terminal Delight (TD) is a GPU-native Linux tiling terminal and agent-observability HUD: a Rust crate in app/ (gpui rendering, rio-vt VT core, CRT effects, MCP server, agent wall), plus a static site, docs and browser prototypes at the repo root."
+verify = "check"
+
+[policy]
+read_roots = ["~/Work/zed-upstream", "~/.cargo", "~/.rustup"]
+ro_paths = ["~/Work/zed-upstream"]
+rw_paths = ["~/.cache/h0/cargo-target/td"]
+binds = [["~/Work/zed-upstream", "{root}/../zed-upstream"]]
+
+[policy.env]
+CARGO_TARGET_DIR = "~/.cache/h0/cargo-target/td"
+CARGO_BUILD_JOBS = "6"
+
+[policy.resources]
+memory_max = "10G"
+cpu_weight = 20
+nice = 19
+
+[checks.check]
+run = "cargo check --offline --quiet"
+cwd = "app"
+about = "Typecheck the app on the default rio-vt core"
+timeout = 1500
+
+[checks.check-alacritty]
+run = "cargo check --offline --quiet --features core-alacritty"
+cwd = "app"
+about = "Typecheck the app on the alacritty fallback core"
+timeout = 1500
+
+[checks.fmt]
+run = "cargo fmt --check"
+cwd = "app"
+about = "rustfmt check, as CI enforces"
+timeout = 120
+
+[checks.clippy]
+run = "cargo clippy --offline --quiet -- -D warnings"
+cwd = "app"
+about = "Strict clippy, warnings are errors as in CI"
+timeout = 1800
+
+[checks.test-vt-boundary]
+run = "cargo test --offline --quiet --bin terminal-delight vt::boundary"
+cwd = "app"
+about = "Guard that only src/vt names a core crate"
+timeout = 1800
+
+[checks.test-themes]
+run = "cargo test --offline --quiet --bin terminal-delight theme::"
+cwd = "app"
+about = "Theme parsing and registry-id tests"
+timeout = 1800
+
+[[triggers]]
+id = "no-edit-other-worktrees"
+on = "before:edit"
+match = "(^|/)\\.(claude/)?worktrees/|~/Work/(td-dev-0\\.5\\.0|zed-upstream)/"
+action = "block"
+note = "Other git worktrees and the pinned zed-upstream checkout are off-limits; edit only this checkout."
+
+[[triggers]]
+id = "no-write-other-worktrees"
+on = "before:write"
+match = "(^|/)\\.(claude/)?worktrees/|~/Work/(td-dev-0\\.5\\.0|zed-upstream)/"
+action = "block"
+note = "Other git worktrees and the pinned zed-upstream checkout are off-limits; write only in this checkout."
+
+[[triggers]]
+id = "cargo-safety"
+on = "before:bash"
+match = "\\bcargo\\s+clean\\b|\\bgit\\s+(worktree\\s+(remove|prune|move)|branch\\s+-[dDmM]\\b)|^(?!.*--offline).*\\bcargo\\s+(check|build|test|clippy|run|doc)\\b"
+action = "block"
+note = "Never cargo clean or remove worktrees/branches; every cargo build command must pass --offline."
+
+[[triggers]]
+id = "expensive-cargo"
+on = "before:bash"
+match = "\\bcargo\\s+(build|run|bench)\\b|\\bcargo\\s+test\\b(?!.*--lib\\s+\\S)"
+action = "inject"
+note = "Full builds and unfiltered test runs are very expensive. Prefer cargo check or cargo test --offline --bin terminal-delight <filter>."
+
+[[triggers]]
+id = "vt-seam-both-cores"
+on = "after:edit"
+match = "app/src/vt/"
+action = "require"
+check = "check-alacritty"
+note = "The vt seam must build on both rio-vt and core-alacritty; only src/vt may name either core crate."
+
+[[triggers]]
+id = "theme-file-rules"
+on = "before:edit"
+match = "app/themes/[^/]+\\.toml$"
+action = "inject"
+note = "Theme name must equal its BUILTIN_THEMES id in src/theme.rs; ansi needs exactly 16 entries; run test-themes."

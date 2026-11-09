@@ -1,0 +1,10 @@
+[project]
+name = "harness-0"
+version = "0.1.0"
+description = "A project-fitted, security-first coding-agent harness"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+h0 = "h0.cli:main"
