@@ -79,6 +79,7 @@ class OpenAICompat:
             raise ProviderError(f"HTTP {e.code}: {e.read().decode(errors='replace')[:1000]}", e.code, e.code >= 500) from None
         except urllib.error.URLError as e:
             raise ProviderError(f"connection: {e}", None, True) from None
+        served: str | None = None
         with resp:
             for raw in resp:
                 line = raw.decode("utf-8", errors="replace").strip()
@@ -88,6 +89,7 @@ class OpenAICompat:
                 if data == "[DONE]":
                     break
                 ev = json.loads(data)
+                served = ev.get("model") or served
                 if ev.get("usage"):
                     usage = ev["usage"]
                 for ch in ev.get("choices", []):
@@ -135,4 +137,4 @@ class OpenAICompat:
         if calls and stop_reason != "tool_use":
             stop_reason = "tool_use"
         return Turn(blocks=blocks, stop_reason=stop_reason, usage=norm, usage_estimated=estimated, model=settings.model,
-                    ttft_ms=ttft, total_ms=int((time.monotonic() - started) * 1000))
+                    served_model=served, ttft_ms=ttft, total_ms=int((time.monotonic() - started) * 1000))
