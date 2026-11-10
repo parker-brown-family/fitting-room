@@ -204,6 +204,16 @@ class SandboxEscapes(unittest.TestCase):
         self.assertTrue(r.timed_out)
         self.assertIsNone(r.exit)
 
+    def test_resource_limited_command_reaches_bash_unaltered(self):
+        # systemd-run expands ${...} in its arguments unless told not to, so under resource
+        # limits `${#x[@]}` became "" and `$HOME` the host's home before bash saw the script
+        # (2026-11-10: an eval check's array test turned into `(( > 0 ))`).
+        sb = Sandbox(root=self.root, resources={"memory_max": "1G", "cpu_weight": 30, "nice": 15})
+        r = sb.run('x=(a b c); echo "n=${#x[@]} two=${x[1]} lit=$(printf %s "$""{HOME}")"')
+        self.assertEqual(r.exit, 0, r.output)
+        self.assertIn("n=3 two=b lit=${HOME}", r.output)
+        self.assertNotIn("Invalid environment variable", r.output)
+
 
 class ToolGuards(unittest.TestCase):
     def setUp(self):
@@ -248,6 +258,68 @@ class ToolGuards(unittest.TestCase):
         self.assertIn("egress_attempt", [e[0] for e in self.events])
 
 
+class Approvals(unittest.TestCase):
+    """An interactive yes answers one gate. A command that hits several (destructive, then network,
+    then the rule of two) must pass every one of them; `always` remembers one exact action."""
+
+    def setUp(self):
+        self.root = make_repo()
+        self.asked = []
+        self.answers = []
+        self.pol = Policy(root=self.root, headless=False)
+        self.tb = Toolbox(self.root, self.pol, Sandbox(root=self.root), ask=self._ask)
+
+    def _ask(self, what, d):
+        self.asked.append(d.rule)
+        return self.answers.pop(0) if self.answers else False
+
+    def tearDown(self):
+        shutil.rmtree(self.root, ignore_errors=True)
+
+    def test_approving_the_destructive_gate_does_not_grant_network(self):
+        self.answers = [True, False]   # yes to "removes a whole tree", no to the network
+        r = self.tb.call("bash", {"command": "rm -rf . ; echo gone", "net": True})
+        self.assertFalse(r.ok)
+        self.assertEqual(self.asked, ["destructive", "egress"])
+        self.assertFalse(self.pol.flags.egress)
+        self.assertTrue((self.root / "app.py").exists())
+
+    def test_rule_of_two_still_holds_after_an_approval(self):
+        self.pol.note_sensitive()
+        self.answers = [True, True, True]
+        r = self.tb.call("bash", {"command": "git reset --hard && echo sent", "net": True})
+        self.assertFalse(r.ok)
+        self.assertIn("rule-of-two", r.text)
+        self.assertEqual(self.asked, ["destructive"])
+        self.assertFalse(self.pol.flags.egress)
+
+    def test_yes_is_once_and_always_is_this_exact_action(self):
+        cmd = "git reset --hard"
+        self.answers = [True]
+        self.assertIsNone(self.tb._gate(lambda: self.pol.check_exec(cmd), "x"))
+        self.assertNotIn(f"exec:{cmd}", self.pol.approvals)
+        self.answers = ["always"]
+        self.assertIsNone(self.tb._gate(lambda: self.pol.check_exec(cmd), "x"))
+        self.assertIsNone(self.tb._gate(lambda: self.pol.check_exec(cmd), "x"))   # not asked again
+        self.assertEqual(self.asked, ["destructive", "destructive"])
+        self.assertIsNotNone(self.tb._gate(lambda: self.pol.check_exec("git reset --hard HEAD~3"), "x"))
+        self.assertEqual(self.asked, ["destructive", "destructive", "destructive"])
+
+    def test_approved_network_counts_toward_the_rule_of_two(self):
+        self.answers = [True]
+        self.assertIsNone(self.tb._gate(lambda: self.pol.check_exec("curl example.com", True), "x"))
+        self.assertTrue(self.pol.flags.egress)
+        d = self.pol.check_exec("cat ~/.ssh/id_ed25519")
+        self.assertEqual(d.rule, "rule-of-two")
+
+    def test_headless_never_asks(self):
+        pol = Policy(root=self.root, headless=True)
+        tb = Toolbox(self.root, pol, Sandbox(root=self.root), ask=self._ask)
+        self.answers = [True, True]
+        self.assertFalse(tb.call("bash", {"command": "rm -rf .", "net": True}).ok)
+        self.assertEqual(self.asked, [])
+
+
 class TraceChain(unittest.TestCase):
     def test_edit_and_delete_detected(self):
         d = Path(tempfile.mkdtemp())
@@ -270,3 +342,55 @@ class TraceChain(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class YoloNeverWidensTheFileTools(unittest.TestCase):
+    """--yolo approves risky commands, which run inside the sandbox. The file tools run in h0's own
+    process, so a yolo approval of a write outside the project reached the real home: on 2026-11-10 a
+    test session edited ~/.config/hypr through a /home/... path quoted in the config it was given."""
+
+    def setUp(self):
+        import tempfile
+        self.tmp = Path(tempfile.mkdtemp(prefix="h0-yolo-"))
+        self.root, self.extra, self.outside = self.tmp / "root", self.tmp / "extra", self.tmp / "outside"
+        for d in (self.root, self.extra, self.outside):
+            d.mkdir()
+        (self.outside / "autostart.lua").write_text("-- theirs\n")
+        os.symlink(self.outside, self.root / "link")
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def toolbox(self, mode="yolo", headless=True):
+        from h0.sandbox import Sandbox
+        from h0.tools import Toolbox
+        pol = Policy(root=self.root, write_roots=[self.extra], read_roots=[self.outside], mode=mode, headless=headless)
+        return Toolbox(self.root, pol, Sandbox(root=self.root)), pol
+
+    def test_yolo_headless_cannot_edit_or_write_outside_the_project(self):
+        tb, _ = self.toolbox()
+        target = self.outside / "autostart.lua"
+        tb.call("read", {"path": str(target)})
+        r1 = tb.call("edit", {"path": str(target), "old": "-- theirs\n", "new": "-- mine\n"})
+        r2 = tb.call("write", {"path": str(self.outside / "new.lua"), "content": "x"})
+        r3 = tb.call("write", {"path": "link/via-symlink.lua", "content": "x"})
+        self.assertFalse(r1.ok or r2.ok or r3.ok, (r1.text, r2.text, r3.text))
+        self.assertEqual(target.read_text(), "-- theirs\n")
+        self.assertEqual(sorted(os.listdir(self.outside)), ["autostart.lua"])
+
+    def test_yolo_still_writes_inside_the_project_and_its_write_roots(self):
+        tb, _ = self.toolbox()
+        self.assertTrue(tb.call("write", {"path": "a.lua", "content": "x"}).ok)
+        self.assertTrue(tb.call("write", {"path": str(self.extra / "b.lua"), "content": "x"}).ok)
+
+    def test_yolo_still_approves_risky_commands_in_the_sandbox(self):
+        pol = Policy(root=self.root, mode="yolo", headless=True)
+        self.assertTrue(pol.check_exec("rm -rf build").allowed)
+
+    def test_an_interactive_person_can_still_approve_one_outside_write(self):
+        _, pol = self.toolbox(mode="auto", headless=False)
+        d = pol.check_write(self.outside / "autostart.lua")
+        self.assertEqual(d.verdict, "ask")
+        pol.approvals.add(d.key)
+        self.assertTrue(pol.check_write(self.outside / "autostart.lua").allowed)

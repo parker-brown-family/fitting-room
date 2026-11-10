@@ -157,3 +157,25 @@ class TheJudgeDefault(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ReplayHome(unittest.TestCase):
+    """A replayed trial must see the same `~` the trial saw, or a change made with `cd ~` is lost."""
+
+    def test_home_is_root_replays_into_the_workspace(self):
+        src = Path(tempfile.mkdtemp(prefix="h0-replay-src-"))
+        (src / ".config").mkdir()
+        (src / ".config/a.conf").write_text("old\n")
+        trace = src.parent / (src.name + ".jsonl")
+        events = [{"type": "host_metadata", "root": "/old/ws"},
+                  {"type": "tool_call", "name": "bash", "args": {"command": "cd ~/.config && echo new > a.conf"}},
+                  {"type": "tool_call", "name": "edit", "args": {"path": "~/.config/a.conf", "old": "new", "new": "newer"}}]
+        trace.write_text("".join(__import__("json").dumps(e) + "\n" for e in events))
+        task = {"id": "t", "setup": {"type": "copy", "from": str(src), "home_is_root": True}}
+        ws, n = evals.replay(task, trace)
+        try:
+            self.assertEqual(n, 2)
+            self.assertEqual((ws / ".config/a.conf").read_text(), "newer\n")
+        finally:
+            evals.remove_workspace(ws)
+            trace.unlink()

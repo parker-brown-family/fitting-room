@@ -20,7 +20,7 @@ import sys
 import time
 from pathlib import Path
 
-from h0 import __version__, config
+from h0 import __version__, config, context
 from h0.cli import build_agent
 from h0.trace import Trace
 
@@ -72,6 +72,8 @@ def cmd_host(args) -> int:
     agent = build_agent(s, fixture, fit, HostUI(), trace)
     if (fixture / "home").is_dir():
         agent.toolbox.sandbox.env["HOME"] = str(fixture / "home")
+        agent.policy.home = fixture / "home"
+        agent.system = context.build(Path(os.path.realpath(fixture)), fit, home=Path(os.path.realpath(fixture / "home")))
     for k, v in {"XDG_CONFIG_HOME": "/tmp/config", "XDG_CACHE_HOME": "/tmp/cache", "XDG_DATA_HOME": "/tmp/data",
                  "XDG_STATE_HOME": "/tmp/state", "CARGO_HOME": "/tmp/cargo-home", "CARGO_TARGET_DIR": "/tmp/cargo-target"}.items():
         agent.toolbox.sandbox.env.setdefault(k, v)

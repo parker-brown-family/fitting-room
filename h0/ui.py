@@ -82,7 +82,7 @@ class UI:
     def turn_end(self, totals) -> None:
         pass
 
-    def ask(self, what: str, decision) -> bool:
+    def ask(self, what: str, decision) -> bool | str:
         if self.quiet or not sys.stdin.isatty():
             return False
         self._newline()
@@ -91,4 +91,6 @@ class UI:
             ans = input().strip().lower()
         except EOFError:
             return False
-        return ans in ("y", "yes", "a", "always")
+        if ans in ("a", "always"):
+            return "always"
+        return ans in ("y", "yes")

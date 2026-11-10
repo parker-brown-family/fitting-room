@@ -43,6 +43,7 @@ class Fitting:
     map_md: str = ""
     lessons: list[dict] = field(default_factory=list)
     version: int = 1
+    undo: str | None = None      # "tree": undo covers every file under the writable roots, bash included
 
     def prompt_layer(self) -> str:
         out = [f"# Project: {self.name}"]
@@ -107,7 +108,9 @@ def dump_toml(data: dict) -> str:
 
 def load(d: Path) -> Fitting:
     d = Path(d)
-    data = tomllib.loads((d / "fitting.toml").read_text())
+    # {fitting_dir} lets a fitting name files it ships (a preview tool, say) wherever it was installed
+    text = (d / "fitting.toml").read_text().replace("{fitting_dir}", str(Path(os.path.realpath(d))))
+    data = tomllib.loads(text)
     lessons = []
     lf = d / "lessons.jsonl"
     if lf.exists():
@@ -119,7 +122,7 @@ def load(d: Path) -> Fitting:
         effort=data.get("effort"), tools=data.get("tools"), checks=data.get("checks", {}),
         triggers=data.get("triggers", []), policy=data.get("policy", {}), budgets=data.get("budgets", {}),
         verify=data.get("verify"), map_md=mp.read_text() if mp.exists() else "", lessons=lessons,
-        version=data.get("version", 1),
+        version=data.get("version", 1), undo=data.get("undo"),
     )
 
 
@@ -127,7 +130,7 @@ def save(f: Fitting, d: Path) -> Path:
     d = Path(d)
     d.mkdir(parents=True, exist_ok=True)
     data = {"name": f.name, "version": f.version, "root": str(f.root), "about": f.about, "model": f.model,
-            "effort": f.effort, "tools": f.tools, "verify": f.verify, "budgets": f.budgets or None,
+            "effort": f.effort, "tools": f.tools, "verify": f.verify, "undo": f.undo, "budgets": f.budgets or None,
             "policy": f.policy or None, "checks": f.checks or None, "triggers": f.triggers or None}
     data = {k: v for k, v in data.items() if v not in (None, "", [], {})}
     (d / "fitting.toml").write_text(dump_toml(data))
@@ -199,15 +202,17 @@ class Triggers:
     def subject(tool: str, args: dict) -> str:
         return str(args.get("command") or args.get("path") or args.get("name") or json.dumps(args))
 
-    def _matching(self, when: str, tool: str, args: dict):
-        s = self.subject(tool, args)
+    def _matching(self, when: str, tool: str, args: dict, resolved: str | None = None):
+        # A file tool's path is matched as the model wrote it and as it resolves: in a live session
+        # rooted at ~/.config/hypr the model writes `bindings.lua`, which never matched `\.config/hypr/`.
+        subjects = [self.subject(tool, args)] + ([resolved] if resolved else [])
         for r in self.rules:
-            if r["_when"] == when and r["_tool"] in ("*", tool) and r["_rx"].search(s):
+            if r["_when"] == when and r["_tool"] in ("*", tool) and any(r["_rx"].search(s) for s in subjects):
                 yield r
 
-    def before(self, tool: str, args: dict):
+    def before(self, tool: str, args: dict, resolved: str | None = None):
         notes: list[str] = []
-        for r in self._matching("before", tool, args):
+        for r in self._matching("before", tool, args, resolved):
             action = r.get("action", "inject")
             if action == "block":
                 self.emit("trigger", rule=r.get("id") or r.get("match"), action="block", tool=tool)
@@ -223,9 +228,9 @@ class Triggers:
                 self.emit("trigger", rule=r.get("id") or r.get("match"), action="inject", tool=tool)
         return None, notes
 
-    def after(self, tool: str, args: dict) -> list[str]:
+    def after(self, tool: str, args: dict, resolved: str | None = None) -> list[str]:
         notes = []
-        for r in self._matching("after", tool, args):
+        for r in self._matching("after", tool, args, resolved):
             if r.get("action") == "require" and self.run_check and r.get("check"):
                 ok, out = self.run_check(r["check"])
                 self.emit("trigger", rule=r.get("id") or r.get("match"), action="require", check=r["check"], ok=ok, tool=tool, when="after")

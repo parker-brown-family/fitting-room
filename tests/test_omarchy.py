@@ -26,3 +26,24 @@ class ThemeAudit(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OmarchyVersionTests(unittest.TestCase):
+    def test_the_version_comes_from_omarchy_itself_before_any_stale_file(self):
+        # 2026-11-10: /usr/share/omarchy/version said 4.0.0.alpha on a box running 4.5.0-3, and the
+        # model was told the older version in every session
+        import os
+        import tempfile
+        from unittest import mock
+        from h0.context import omarchy_version
+        d = tempfile.mkdtemp()
+        cmd = os.path.join(d, "omarchy-version")
+        with open(cmd, "w") as f:
+            f.write("#!/bin/sh\necho 9.9.9-1\n")
+        os.chmod(cmd, 0o755)
+        with mock.patch.dict(os.environ, {"PATH": d + os.pathsep + os.environ.get("PATH", "")}):
+            self.assertEqual(omarchy_version(), "9.9.9-1")
+        with open(cmd, "w") as f:
+            f.write("#!/bin/sh\nexit 1\n")
+        with mock.patch.dict(os.environ, {"PATH": d + os.pathsep + os.environ.get("PATH", "")}):
+            self.assertNotEqual(omarchy_version(), "9.9.9-1")     # a failing command falls back to the files

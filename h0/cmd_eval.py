@@ -24,6 +24,8 @@ def parse_arm(spec: str) -> dict:
         arm["no_lessons"] = True
     if "noverify" in name:
         arm["no_verify"] = True
+    if "review" in name:
+        arm["finish_review"] = True
     return arm
 
 

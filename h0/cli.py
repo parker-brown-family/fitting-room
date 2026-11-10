@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import secrets as pysecrets
 import sys
 import time
@@ -42,7 +43,8 @@ def load_messages(sid: str) -> dict:
     return json.loads(messages_path(sid).read_text())
 
 
-def build_agent(settings: config.Settings, root: Path, fit, ui: UI, trace, provider=None, extra_tools=None) -> Agent:
+def build_agent(settings: config.Settings, root: Path, fit, ui: UI, trace, provider=None, extra_tools=None,
+                undo_store: Path | None = None) -> Agent:
     pol_cfg = (fit.policy if fit else {}) or {}
     policy = Policy(root=root,
                     read_roots=[Path(os.path.expanduser(p)) for p in pol_cfg.get("read_roots", [])],
@@ -69,6 +71,10 @@ def build_agent(settings: config.Settings, root: Path, fit, ui: UI, trace, provi
         enabled = ["read", "edit", "write", "bash", "grep", "check"]
     tb = Toolbox(root, policy, sandbox, output_chars=settings.tool_output_chars,
                  checks=(fit.checks if fit else {}), ask=ui.ask, emit=trace.emit, enabled=enabled, local=settings.local)
+    if fit and fit.undo == "tree" and undo_store:
+        from h0.undo import TreeUndo, prune
+        prune(undo_store.parent, config.STATE / "undo-blobs")
+        tb.tree = TreeUndo([Path(root)] + policy.write_roots + sandbox.rw_paths, undo_store, config.STATE / "undo-blobs")
     system = context.build(Path(os.path.realpath(root)), fit)
     prov = provider or make_provider(settings)
     return Agent(settings=settings, provider=prov, toolbox=tb, policy=policy, trace=trace, ui=ui, system=system, fitting=fit)
@@ -129,7 +135,7 @@ def cmd_run(args) -> int:
     trace = trace_mod.Trace(tpath)
     ui = UI(quiet=args.json or args.quiet, show_thinking=args.thinking)
     try:
-        agent = build_agent(settings, root, fit, ui, trace)
+        agent = build_agent(settings, root, fit, ui, trace, undo_store=config.STATE / "sessions" / f"{sid}.undo")
     except ProviderError as e:
         print(f"h0: {e}", file=sys.stderr)
         return 2
@@ -143,6 +149,9 @@ def cmd_run(args) -> int:
         save_messages(sid, agent)
         summary.update(session=sid, trace=str(tpath), model=settings.model, effort=settings.effort,
                        fitting=fit.name if fit else None)
+        if agent.toolbox.tree:
+            ch = agent.toolbox.tree.changes("last")
+            summary["changed"] = [{"path": _home_rel(f["path"]), "kind": f["kind"]} for f in (ch or {}).get("files", [])]
         trace.emit("host_summary", actions_complete=summary["stop"] == "end_turn", stop=summary["stop"], totals=summary["totals"])
         trace.close()
         if args.json:
@@ -152,9 +161,13 @@ def cmd_run(args) -> int:
                 print()
             t = summary["totals"]
             usd = "?" if t["usd"] is None else f"${t['usd']:.4f}"
+            if summary.get("error"):
+                print(f"h0: {summary['error'][:2000]}", file=sys.stderr)
             print(f"\n· {summary['stop']} · {t['turns']} turns · {t['input_tokens'] + t['cache_read_input_tokens'] + t['cache_creation_input_tokens']:,} in "
                   f"({t['cache_read_input_tokens']:,} cached) · {t['output_tokens']:,} out · {usd} · {summary['wall_s']}s", file=sys.stderr)
             print(f"· trace {tpath}", file=sys.stderr)
+            if "changed" in summary:
+                print(f"· changed {len(summary['changed'])} files · h0 changes --session {sid} for the diff, h0 undo --session {sid} to put back", file=sys.stderr)
         return 0 if summary["stop"] == "end_turn" else 1
     return repl(agent, settings, fit, trace, tpath, sid)
 
@@ -170,6 +183,8 @@ def repl(agent, settings, fit, trace, tpath, sid) -> int:
     while True:
         try:
             line = input("\n› ")
+            while line.endswith("\\"):   # a trailing backslash continues the prompt on the next line
+                line = line[:-1] + "\n" + input("… ")
         except (EOFError, KeyboardInterrupt):
             print()
             break
@@ -179,7 +194,25 @@ def repl(agent, settings, fit, trace, tpath, sid) -> int:
         if line in ("/q", "/quit", "/exit"):
             break
         if line == "/help":
-            print("/cost  /model <id>  /effort <level>  /trace  /quit")
+            print("/undo   put back the files changed by the last request" +
+                  (" (anything under the writable roots)\n" if agent.toolbox.tree else " (file tools only, not bash)\n") +
+                  "/clear  start a fresh conversation (cost totals keep counting)\n"
+                  "end a line with \\ to continue the prompt on the next line\n"
+                  "/cost  /model <id>  /effort <level>  /trace  /quit")
+            continue
+        if line == "/changes":
+            if agent.toolbox.tree:
+                print_changes(agent.toolbox.tree.changes("last"))
+            else:
+                print("this fitting keeps no undo store, so changes made through bash cannot be listed; see /trace")
+            continue
+        if line == "/undo":
+            files = agent.undo()
+            print("restored " + ", ".join(files) if files else "nothing to undo")
+            continue
+        if line == "/clear":
+            agent.clear()
+            print("conversation cleared")
             continue
         if line == "/cost":
             print(json.dumps(agent.totals.as_dict(), indent=2))
@@ -204,12 +237,94 @@ def repl(agent, settings, fit, trace, tpath, sid) -> int:
             save_messages(sid, agent)
         t = summary["totals"]
         usd = "?" if t["usd"] is None else f"${t['usd']:.4f}"
+        if summary.get("error"):
+            print(f"\n\033[31m· {summary['error'][:500]}\033[0m")
         print(f"\n\033[2m· {summary['stop']} · {t['turns']} turns · {usd} so far\033[0m")
+        if agent.toolbox.tree:
+            ch = agent.toolbox.tree.changes("last")
+            n = len(ch["files"]) if ch else 0
+            if n:
+                print(f"\033[2m· changed {n} file{'s' if n != 1 else ''}: " + ", ".join(_home_rel(f["path"]) for f in ch["files"][:4]) +
+                      (" …" if n > 4 else "") + " · /changes for the diff, /undo to put back\033[0m")
     trace.emit("host_summary", actions_complete=True, stop="interactive", totals=agent.totals.as_dict())
     trace.close()
     print(f"trace {tpath}")
     print(f"resume with: h0 --resume {sid}")
     return 0
+
+
+def _undo_store(args) -> Path | None:
+    base = config.STATE / "sessions"
+    if args.session:
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", args.session) or ".." in args.session:
+            print(f"h0: not a session id: {args.session!r}", file=sys.stderr)
+            return None
+        store = base / f"{args.session}.undo"
+    else:
+        stores = sorted(base.glob("*.undo"), key=lambda p: p.stat().st_mtime) if base.is_dir() else []
+        if not stores:
+            print("h0: no session has an undo store (only fittings with undo = \"tree\" keep one)", file=sys.stderr)
+            return None
+        store = stores[-1]
+    if not (store / "roots.json").exists():
+        print(f"h0: no undo store for session {store.stem}", file=sys.stderr)
+        return None
+    return store
+
+
+def _home_rel(p: str) -> str:
+    h = str(config.HOME)
+    return "~" + p[len(h):] if p == h or p.startswith(h + os.sep) else p
+
+
+def print_changes(r: dict | None, with_diff: bool = True) -> None:
+    if not r or not r["files"]:
+        print("nothing changed")
+        return
+    for f in r["files"]:
+        copy = f" (a copy of {_home_rel(f['copy_of'])} as it was)" if f.get("copy_of") else ""
+        print(f"{f['kind']:<8} {_home_rel(f['path'])}{copy}")
+    if with_diff:
+        for f in r["files"]:
+            if f["diff"]:
+                print(f"\n── {_home_rel(f['path'])}\n{f['diff'].rstrip()}")
+            elif f["kind"] != "deleted" and not f.get("copy_of"):
+                print(f"\n── {_home_rel(f['path'])}: not shown (binary, a link, or larger than 1 MB)")
+    if r["partial"]:
+        print("more files than undo indexes; files past the limit were not checked")
+
+
+def cmd_changes(args) -> int:
+    """Show what a session's last request changed on disk, from the undo store."""
+    from h0.undo import TreeUndo
+    store = _undo_store(args)
+    if store is None:
+        return 1
+    print(f"session {store.stem} · since {'its oldest kept checkpoint' if args.all else 'its last request began'}")
+    print_changes(TreeUndo.open(store).changes("all" if args.all else "last"), with_diff=not args.names)
+    return 0
+
+
+def cmd_undo(args) -> int:
+    """Undo a session's last change from its on-disk store, for a session that was interrupted or killed."""
+    from h0.undo import TreeUndo
+    store = _undo_store(args)
+    if store is None:
+        return 1
+    r = TreeUndo.open(store).undo()
+    print(f"session {store.stem}")
+    if not r:
+        print("nothing to undo")
+        return 0
+    for p in r["restored"]:
+        print(f"put back  {p}")
+    for p in r["removed"]:
+        print(f"removed   {p}  (the session created it)")
+    for p in r["failed"]:
+        print(f"NOT put back  {p}")
+    if r["partial"]:
+        print("more files than undo indexes; files past the limit were not checked")
+    return 1 if r["failed"] else 0
 
 
 def cmd_trace(args) -> int:
@@ -257,7 +372,7 @@ def cmd_doctor(args) -> int:
 
 def main(argv=None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
-    sub_names = {"run", "fit", "eval", "learn", "trace", "doctor", "host", "omarchy", "survey"}
+    sub_names = {"run", "undo", "changes", "fit", "eval", "learn", "trace", "doctor", "host", "omarchy", "survey"}
     if not argv or argv[0] not in sub_names and argv[0] not in ("-h", "--help", "--version"):
         argv = ["run"] + argv
     p = argparse.ArgumentParser(prog="h0", description="harness-0: a project-fitted, security-first coding agent")
@@ -275,7 +390,7 @@ def main(argv=None) -> int:
     r.add_argument("--no-fitting", action="store_true")
     r.add_argument("--root", help="project root (default: fitting root or cwd)")
     r.add_argument("--cwd")
-    r.add_argument("--yolo", action="store_true", help="allow risky actions inside the sandbox without asking")
+    r.add_argument("--yolo", action="store_true", help="allow risky commands inside the sandbox without asking (never file writes outside the project)")
     r.add_argument("--plan", action="store_true", help="read-only")
     r.add_argument("--max-turns", dest="max_turns", type=int)
     r.add_argument("--max-tokens", dest="max_tokens", type=int)
@@ -286,6 +401,16 @@ def main(argv=None) -> int:
     r.add_argument("--trace", help="trace file path")
     r.add_argument("--resume", help="continue a saved session by id (its root and transcript are restored)")
     r.set_defaults(func=cmd_run)
+
+    u = sp.add_parser("undo", help="put back the last change of a session, even one that was killed")
+    u.add_argument("--session", help="session id (default: the most recent session with an undo store)")
+    u.set_defaults(func=cmd_undo)
+
+    ch = sp.add_parser("changes", help="show what a session's last request changed on disk, as a diff")
+    ch.add_argument("--session", help="session id (default: the most recent session with an undo store)")
+    ch.add_argument("--all", action="store_true", help="since the oldest kept checkpoint, not just the last request")
+    ch.add_argument("--names", action="store_true", help="file names only, no diff")
+    ch.set_defaults(func=cmd_changes)
 
     t = sp.add_parser("trace", help="verify or show a session trace")
     t.add_argument("action", choices=["verify", "show"])

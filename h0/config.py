@@ -51,6 +51,7 @@ class Settings:
     max_tokens: int = 64_000
     max_turns: int = 80
     budget_usd: float | None = None      # hard stop for one session; None = no cap
+    finish_review: bool = False          # once, at the first finish: list the request's expectations as met/not met
     mode: str = "auto"                   # auto (ask on risky) | yolo (allow in sandbox) | plan (read-only)
     headless: bool = False               # no prompts: ask becomes deny unless yolo
     tool_output_chars: int = 16_000

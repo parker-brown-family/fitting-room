@@ -320,7 +320,9 @@ class Sandbox:
             # run it in its own systemd scope with a hard memory ceiling and low CPU weight.
             pre = []
             if shutil.which("systemd-run"):
-                pre = ["systemd-run", "--user", "--scope", "--quiet", "--collect"]
+                # --expand-environment=no: systemd-run otherwise substitutes ${...} and $VAR in
+                # the command line, so bash would receive an already-mangled script
+                pre = ["systemd-run", "--user", "--scope", "--quiet", "--collect", "--expand-environment=no"]
                 if self.resources.get("memory_max"):
                     pre += ["-p", f"MemoryMax={self.resources['memory_max']}", "-p", "MemorySwapMax=0"]
                 if self.resources.get("cpu_weight"):

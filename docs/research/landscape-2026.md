@@ -1,7 +1,7 @@
 ---
 title: Landscape 2026
 tags: [harness-0, research]
-updated: 2026-11-08
+updated: 2026-11-10
 ---
 
 # Landscape 2026
@@ -36,8 +36,19 @@ session could not read).
 | **LangChain Deep Agents** (2026) | the harness around gpt-5.2-codex | trace analysis, self-verification, loop detection, context delivery | Terminal-Bench 2.0 from 52.8% to 66.5%, model fixed | verified |
 | **Empirical Harness Design** (Fan et al.; arXiv 2609.20804, Sep 2026) | planning, action space, context management | 176 matched settings, one loop | context management decides tight budgets (79% overflow at 32k); a switch that helped one model cost another 23.2 points | verified (summaries) |
 
-What nobody in this table measured is the question harness-0 asks: the same harness, on
-the same model, with and without a fitting for one real project, paired task by task.
+New primary sources, opened 10 November 2026:
+
+| Work | What is fitted | Evidence and limits |
+|---|---|---|
+| **GEPA / gskill** (Feb 2026) | repository-specific skills evolved on generated tasks with separate training, validation and test sets | authors' held-out synthetic bug-fix results; [primary source](https://gepa-ai.github.io/gepa/blog/2026/02/18/automatically-learning-skills-for-coding-agents/), not replicated |
+| **Microsoft AutoSaddler** (Aug 2026) | executable harness components, guided by trace diagnosis | preliminary author benchmarks; [repository](https://github.com/microsoft/AutoSaddler) distinguishes V1 research from current V2, not replicated |
+| **Stripe Minions** (Feb 2026) | company-specific workers with deterministic and agent steps | [production account](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents-part-2), without a controlled runtime comparison |
+
+gskill is direct prior art for repository-specific learning and controlled evaluation;
+the earlier claim that nobody here measured fitting was too broad. h0's evidence concerns
+its own paired project tasks. The [Bespoke Harnesses intake](2026-11-10-bespoke-harness-leaders.md)
+separates that question from the value of owning the runtime and reconciles the shared
+research with our newer four-harness comparison.
 
 ## Evidence about context, skills and memory
 

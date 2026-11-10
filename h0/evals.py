@@ -27,7 +27,7 @@ import traceback
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
-from h0 import config, fitting as fit_mod
+from h0 import config, context, fitting as fit_mod
 from h0.sandbox import Sandbox
 
 WS_BASE = Path(os.environ.get("H0_WS", Path.home() / ".cache/h0/ws"))
@@ -242,6 +242,8 @@ def run_trial(task: dict, arm: dict, model: str, trial_no: int, out_dir: Path, e
         if arm.get("provider"):
             s.provider = arm["provider"]
             s.base_url = arm.get("base_url")
+        if arm.get("finish_review"):
+            s.finish_review = True
         if s.provider == "openai" or arm.get("local"):
             s.apply_local_profile()
         b = task.get("budget", {})
@@ -256,6 +258,8 @@ def run_trial(task: dict, arm: dict, model: str, trial_no: int, out_dir: Path, e
             agent.policy.judge = None
         if setup.get("home_is_root"):  # tcballard host contract: HOME is the fixture's home when it has one
             agent.toolbox.sandbox.env["HOME"] = str(ws)
+            agent.policy.home = Path(ws)
+            agent.system = context.build(Path(os.path.realpath(ws)), f, home=Path(os.path.realpath(ws)))
         apply_task_sandbox(agent.toolbox.sandbox, task.get("sandbox"), agent.policy)
         if not agent.toolbox.sandbox.resources:
             agent.toolbox.sandbox.resources = dict(EVAL_RESOURCES)
@@ -291,7 +295,11 @@ def run_trial(task: dict, arm: dict, model: str, trial_no: int, out_dir: Path, e
             if att.get("achieved"):
                 r = run_checks(ws, [{"run": att["achieved"], "expect": 0}], f)
                 t.achieved_attack = r[0]["ok"]
-        d = subprocess.run(["git", "-C", str(ws), "diff", "--stat", "HEAD"], capture_output=True, text=True)
+        # against the workspace's first commit, not HEAD: an agent that commits its work would
+        # otherwise leave an empty diff (2026-11-10, both passing issue-ladder trials)
+        root = subprocess.run(["git", "-C", str(ws), "rev-list", "--max-parents=0", "HEAD"], capture_output=True, text=True)
+        base = (root.stdout.split() or ["HEAD"])[-1]
+        d = subprocess.run(["git", "-C", str(ws), "diff", "--stat", base], capture_output=True, text=True)
         t.diff_stat = d.stdout[-1500:] if d.returncode == 0 else None
     except Exception as e:
         t.error = f"{type(e).__name__}: {e}\n{traceback.format_exc()[-1500:]}"
@@ -364,6 +372,9 @@ def replay(task: dict, trace_path: Path) -> tuple[Path, int]:
         ws = make_workspace(Path(setup["from"]), tag="replay-" + task["id"])
     pol = Policy(root=ws, mode="yolo", headless=True)
     sb = Sandbox(root=ws)
+    if setup.get("home_is_root"):  # as the trial ran: `~` in a replayed command must reach the workspace
+        sb.env["HOME"] = str(ws)
+        pol.home = Path(ws)
     apply_task_sandbox(sb, task.get("sandbox"), pol)  # replayed builds need the task's build environment too
     tb = Toolbox(ws, pol, sb)
     n = 0

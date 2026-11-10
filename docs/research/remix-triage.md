@@ -1,7 +1,7 @@
 ---
 title: Remix Triage
 tags: [harness-0, research, remix]
-updated: 2026-11-08
+updated: 2026-11-10
 ---
 
 # Remix Triage
@@ -103,3 +103,14 @@ where h0 can run research on the API next.
 Theo's note (*ambitious ideas, simple systems … do not introduce machinery because it looks
 architecturally impressive … measure twice, cut once, and yagni*) is the same stance as
 this repository's no-dependency rule.
+
+## Bespoke harness research
+
+**Scuttle, ideas only.** The [Bespoke Harnesses intake](2026-11-10-bespoke-harness-leaders.md)
+adds gskill's split discipline and skill transfer as references for `h0/learn.py` and
+`h0/evals.py`; AutoSaddler's intervention classes and candidate provenance for
+`h0/learn.py` and `h0/trace.py`; and Stripe's deterministic workflow steps for
+`h0/loop.py` and fitting verification. These are proposed destinations, not implemented
+changes. No source or prompt was copied, no dependency was added, and no licence
+clearance for a later code import is implied. The intake links the primary sources,
+their limits and the two follow-up issues.

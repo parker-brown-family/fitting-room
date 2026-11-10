@@ -28,6 +28,7 @@ class Decision:
     verdict: str          # allow | ask | deny
     reason: str = ""
     rule: str = ""
+    key: str = ""         # what a person approves when they answer an ask; empty for allow and deny
 
     @property
     def allowed(self) -> bool:
@@ -77,12 +78,17 @@ class Policy:
     judge: Callable[[str], Decision | None] | None = None
     approvals: set[str] = field(default_factory=set)
     protected: list[Path] = field(default_factory=list)   # never writable: e.g. the fittings that define this policy
+    home: Path | None = None   # what `~` means to the model: the sandbox's HOME when a run gives it one
 
     def __post_init__(self) -> None:
         self.root = Path(os.path.realpath(self.root))
 
     # -- helpers --------------------------------------------------------------
     def resolve(self, path: str, cwd: Path | None = None) -> Path:
+        # `~` must name the same place for the file tools as for bash, or a path the model
+        # just listed with `ls ~/.config` is refused as outside the project by `edit`
+        if self.home is not None and (path == "~" or path.startswith("~/")):
+            path = str(self.home) + path[1:]
         p = Path(os.path.expanduser(path))
         if not p.is_absolute():
             p = (cwd or self.root) / p
@@ -95,12 +101,13 @@ class Policy:
                 return True
         return False
 
-    def _finish(self, d: Decision, key: str) -> Decision:
+    def _finish(self, d: Decision, key: str, yolo_approves: bool = True) -> Decision:
         if d.verdict == "ask":
-            if key in self.approvals or self.mode == "yolo":
+            if key in self.approvals or (self.mode == "yolo" and yolo_approves):
                 return Decision("allow", d.reason + " (approved)", d.rule)
             if self.headless:
                 return Decision("deny", d.reason + " (headless: no one to ask)", d.rule)
+            return Decision("ask", d.reason, d.rule, key)
         return d
 
     # -- reads ----------------------------------------------------------------
@@ -131,7 +138,12 @@ class Policy:
             return Decision("deny", "writing a credential-shaped file", "secret-path")
         if self._under(p, [self.root] + self.write_roots):
             return Decision("allow", rule="inside-project")
-        return self._finish(Decision("ask", f"write outside the project: {p}", "write-outside"), f"write:{p}")
+        # --yolo approves what runs inside the sandbox. The file tools run in h0's own process, so a
+        # yolo approval here was a write anywhere the person can write: on 2026-11-10 a test session
+        # whose home had been moved edited the real ~/.config/hypr through a path quoted in a config
+        # file. Only a person, one write at a time, may approve this.
+        return self._finish(Decision("ask", f"write outside the project: {p}", "write-outside"), f"write:{p}",
+                            yolo_approves=False)
 
     # -- commands -------------------------------------------------------------
     def check_exec(self, command: str, net: bool = False) -> Decision:

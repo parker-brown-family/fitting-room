@@ -8,6 +8,8 @@ prefix survives a whole day of caching.
 from __future__ import annotations
 
 import os
+import shutil
+import subprocess
 import platform
 from datetime import date
 from pathlib import Path
@@ -23,6 +25,15 @@ How you work:
 
 
 def omarchy_version() -> str | None:
+    # Omarchy's own command asks the package manager. /usr/share/omarchy/version is a file 4.5 no
+    # longer maintains: on 2026-11-10 it said 4.0.0.alpha on a box running 4.5.0-3.
+    if shutil.which("omarchy-version"):
+        try:
+            r = subprocess.run(["omarchy-version"], capture_output=True, text=True, timeout=5)
+            if r.returncode == 0 and r.stdout.strip():
+                return r.stdout.strip()
+        except (OSError, subprocess.SubprocessError):
+            pass
     for p in ("/usr/share/omarchy/version", os.path.expanduser("~/.local/share/omarchy/version")):
         try:
             return Path(p).read_text().strip()
@@ -31,17 +42,22 @@ def omarchy_version() -> str | None:
     return None
 
 
-def environment(root: Path) -> str:
+def environment(root: Path, home: Path | None = None) -> str:
     om = omarchy_version()
     osname = f"Omarchy {om} (Arch Linux, Hyprland)" if om else f"{platform.system()} {platform.release()}"
-    return f"Environment: {osname}. Project root: {root}. Today: {date.today().isoformat()}."
+    where = f"Project root: {root}."
+    if home is not None:
+        # without this, a model told only the root writes ~/<root path>/... and gets lost for turns
+        where += " Your home directory (~) is the project root itself, so ~/.config means the project's .config." \
+            if Path(home) == Path(root) else f" Your home directory (~) is {home}."
+    return f"Environment: {osname}. {where} Today: {date.today().isoformat()}."
 
 
-def build(root: Path, fitting=None) -> str:
+def build(root: Path, fitting=None, home: Path | None = None) -> str:
     parts = [CORE]
     if fitting is not None:
         parts.append(fitting.prompt_layer())
-    parts.append(environment(root))
+    parts.append(environment(root, home))
     return "\n\n".join(p for p in parts if p)
 
 
