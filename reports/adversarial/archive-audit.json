@@ -1,0 +1,3935 @@
+{
+  "schema": "h0-archive-audit-v1",
+  "paid_model_calls": 0,
+  "scope": "Immediate child runs only; rescoring subdirectories excluded. Archives may overlap; do not aggregate them.",
+  "cluster_inference": "Task-weighted bootstrap and sign-flip sensitivity; sign exchangeability and independent task sampling are assumptions, not established facts.",
+  "runs": [
+    {
+      "path": "/home/parker/Work/harness-0/runs/hcv-conventions/trials.jsonl",
+      "sha256": "b39896d6f6b54821e0adcab5a8a74a91c38d4f86bcc5f66b8aebb7f3bdfb29c3",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "attempt_rows": 9,
+          "latest_rows": 9,
+          "scored": 9,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.100815,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.100815,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.100815,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 9,
+          "latest_rows": 9,
+          "scored": 9,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.074457,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.074457,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.074457,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "attempt_rows": 9,
+          "latest_rows": 9,
+          "scored": 9,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 2.4052540000000002,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 2.4052540000000002,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 2.4052540000000002,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 9,
+          "latest_rows": 9,
+          "scored": 9,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.738469,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.738469,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.738469,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "attempt_rows": 9,
+          "latest_rows": 9,
+          "scored": 9,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.106927,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.106927,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.106927,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 9,
+          "latest_rows": 9,
+          "scored": 9,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.850543,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.850543,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.850543,
+            "known_records": 9,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 9,
+          "unique_tasks": 3,
+          "arm_only": 2,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 0.5,
+          "equal_task_weighted_success_delta": 0.2222222222222222,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.3333333333333333
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 0.5,
+            "method": "exact",
+            "nonzero_tasks": 2,
+            "assignments": 4
+          },
+          "task_deltas": {
+            "hcvc-privacy-paragraph": [
+              0,
+              0,
+              0
+            ],
+            "hcvc-reminder-email": [
+              0,
+              0,
+              1
+            ],
+            "hcvc-video-count-route": [
+              1,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 9,
+          "unique_tasks": 3,
+          "arm_only": 0,
+          "base_only": 1,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": -0.1111111111111111,
+          "task_cluster_bootstrap_ci95": [
+            -0.3333333333333333,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 1,
+            "assignments": 2
+          },
+          "task_deltas": {
+            "hcvc-privacy-paragraph": [
+              -1,
+              0,
+              0
+            ],
+            "hcvc-reminder-email": [
+              0,
+              0,
+              0
+            ],
+            "hcvc-video-count-route": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 9,
+          "unique_tasks": 3,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "hcvc-privacy-paragraph": [
+              0,
+              0,
+              0
+            ],
+            "hcvc-reminder-email": [
+              0,
+              0,
+              0
+            ],
+            "hcvc-video-count-route": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/hcv-symptom/trials.jsonl",
+      "sha256": "fc2286292edd753b1d05d1ccbf4422ff1f1c5a822a3716facc43253b2f463a21",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.346055,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.346055,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.346055,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.335439,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.335439,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.335439,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 6.957024,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 6.957024,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 6.957024,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 5.264947,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 5.264947,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 5.264947,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 3.0061,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 3.0061,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 3.0061,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 2.629344,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 2.629344,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 2.629344,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 28,
+          "unique_tasks": 14,
+          "arm_only": 2,
+          "base_only": 1,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.03571428571428571,
+          "task_cluster_bootstrap_ci95": [
+            -0.07142857142857142,
+            0.21428571428571427
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 2,
+            "assignments": 4
+          },
+          "task_deltas": {
+            "hcv-0f52a677-s": [
+              1,
+              1
+            ],
+            "hcv-100d0f08-s": [
+              -1,
+              0
+            ],
+            "hcv-180e9972-s": [
+              0,
+              0
+            ],
+            "hcv-2e623f32-s": [
+              0,
+              0
+            ],
+            "hcv-361de64e-s": [
+              0,
+              0
+            ],
+            "hcv-3ee45b15-s": [
+              0,
+              0
+            ],
+            "hcv-4bcc180d-s": [
+              0,
+              0
+            ],
+            "hcv-606644bd-s": [
+              0,
+              0
+            ],
+            "hcv-8b169f13-s": [
+              0,
+              0
+            ],
+            "hcv-99a93041-s": [
+              0,
+              0
+            ],
+            "hcv-a7c735b0-s": [
+              0,
+              0
+            ],
+            "hcv-b4e2a257-s": [
+              0,
+              0
+            ],
+            "hcv-d655c293-s": [
+              0,
+              0
+            ],
+            "hcv-e21593f4-s": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 28,
+          "unique_tasks": 14,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "hcv-0f52a677-s": [
+              0,
+              0
+            ],
+            "hcv-100d0f08-s": [
+              0,
+              0
+            ],
+            "hcv-180e9972-s": [
+              0,
+              0
+            ],
+            "hcv-2e623f32-s": [
+              0,
+              0
+            ],
+            "hcv-361de64e-s": [
+              0,
+              0
+            ],
+            "hcv-3ee45b15-s": [
+              0,
+              0
+            ],
+            "hcv-4bcc180d-s": [
+              0,
+              0
+            ],
+            "hcv-606644bd-s": [
+              0,
+              0
+            ],
+            "hcv-8b169f13-s": [
+              0,
+              0
+            ],
+            "hcv-99a93041-s": [
+              0,
+              0
+            ],
+            "hcv-a7c735b0-s": [
+              0,
+              0
+            ],
+            "hcv-b4e2a257-s": [
+              0,
+              0
+            ],
+            "hcv-d655c293-s": [
+              0,
+              0
+            ],
+            "hcv-e21593f4-s": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 28,
+          "unique_tasks": 14,
+          "arm_only": 1,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.03571428571428571,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.10714285714285714
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 1,
+            "assignments": 2
+          },
+          "task_deltas": {
+            "hcv-0f52a677-s": [
+              0,
+              0
+            ],
+            "hcv-100d0f08-s": [
+              0,
+              0
+            ],
+            "hcv-180e9972-s": [
+              0,
+              0
+            ],
+            "hcv-2e623f32-s": [
+              0,
+              0
+            ],
+            "hcv-361de64e-s": [
+              0,
+              0
+            ],
+            "hcv-3ee45b15-s": [
+              0,
+              0
+            ],
+            "hcv-4bcc180d-s": [
+              0,
+              0
+            ],
+            "hcv-606644bd-s": [
+              0,
+              0
+            ],
+            "hcv-8b169f13-s": [
+              0,
+              0
+            ],
+            "hcv-99a93041-s": [
+              0,
+              0
+            ],
+            "hcv-a7c735b0-s": [
+              0,
+              0
+            ],
+            "hcv-b4e2a257-s": [
+              0,
+              0
+            ],
+            "hcv-d655c293-s": [
+              0,
+              1
+            ],
+            "hcv-e21593f4-s": [
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/hcv-symptom-local/trials.jsonl",
+      "sha256": "33721ba079183e32fe670a4636c7bd1df6e6623b461a4e444e7eb8c3265e2835",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "vanilla",
+          "attempt_rows": 1,
+          "latest_rows": 1,
+          "scored": 1,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 1
+          },
+          "latest_all_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 1
+          },
+          "report_scored_only_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 1
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": []
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/hcv-v1/trials.jsonl",
+      "sha256": "6b235c5e978386cbce3cd677f1fc9f7781e01e659ddd2b1e0f100794735562de",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.257313,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.257313,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.257313,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.29515600000000003,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.29515600000000003,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.29515600000000003,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 6.208528,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 6.208528,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 6.208528,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 5.174655,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 5.174655,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 5.174655,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 2.936202,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 2.936202,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 2.936202,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 28,
+          "latest_rows": 28,
+          "scored": 28,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 2.2654,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 2.2654,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 2.2654,
+            "known_records": 28,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 28,
+          "unique_tasks": 14,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "hcv-0f52a677": [
+              0,
+              0
+            ],
+            "hcv-100d0f08": [
+              0,
+              0
+            ],
+            "hcv-180e9972": [
+              0,
+              0
+            ],
+            "hcv-2e623f32": [
+              0,
+              0
+            ],
+            "hcv-361de64e": [
+              0,
+              0
+            ],
+            "hcv-3ee45b15": [
+              0,
+              0
+            ],
+            "hcv-4bcc180d": [
+              0,
+              0
+            ],
+            "hcv-606644bd": [
+              0,
+              0
+            ],
+            "hcv-8b169f13": [
+              0,
+              0
+            ],
+            "hcv-99a93041": [
+              0,
+              0
+            ],
+            "hcv-a7c735b0": [
+              0,
+              0
+            ],
+            "hcv-b4e2a257": [
+              0,
+              0
+            ],
+            "hcv-d655c293": [
+              0,
+              0
+            ],
+            "hcv-e21593f4": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 28,
+          "unique_tasks": 14,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "hcv-0f52a677": [
+              0,
+              0
+            ],
+            "hcv-100d0f08": [
+              0,
+              0
+            ],
+            "hcv-180e9972": [
+              0,
+              0
+            ],
+            "hcv-2e623f32": [
+              0,
+              0
+            ],
+            "hcv-361de64e": [
+              0,
+              0
+            ],
+            "hcv-3ee45b15": [
+              0,
+              0
+            ],
+            "hcv-4bcc180d": [
+              0,
+              0
+            ],
+            "hcv-606644bd": [
+              0,
+              0
+            ],
+            "hcv-8b169f13": [
+              0,
+              0
+            ],
+            "hcv-99a93041": [
+              0,
+              0
+            ],
+            "hcv-a7c735b0": [
+              0,
+              0
+            ],
+            "hcv-b4e2a257": [
+              0,
+              0
+            ],
+            "hcv-d655c293": [
+              0,
+              0
+            ],
+            "hcv-e21593f4": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 28,
+          "unique_tasks": 14,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "hcv-0f52a677": [
+              0,
+              0
+            ],
+            "hcv-100d0f08": [
+              0,
+              0
+            ],
+            "hcv-180e9972": [
+              0,
+              0
+            ],
+            "hcv-2e623f32": [
+              0,
+              0
+            ],
+            "hcv-361de64e": [
+              0,
+              0
+            ],
+            "hcv-3ee45b15": [
+              0,
+              0
+            ],
+            "hcv-4bcc180d": [
+              0,
+              0
+            ],
+            "hcv-606644bd": [
+              0,
+              0
+            ],
+            "hcv-8b169f13": [
+              0,
+              0
+            ],
+            "hcv-99a93041": [
+              0,
+              0
+            ],
+            "hcv-a7c735b0": [
+              0,
+              0
+            ],
+            "hcv-b4e2a257": [
+              0,
+              0
+            ],
+            "hcv-d655c293": [
+              0,
+              0
+            ],
+            "hcv-e21593f4": [
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/hcv-v2/trials.jsonl",
+      "sha256": "bedf9e5ac1f269c0a094ccdcd327c1de1528b1692851e274b516762a5ccf3d34",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "attempt_rows": 4,
+          "latest_rows": 4,
+          "scored": 4,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.034666999999999996,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.034666999999999996,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.034666999999999996,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 4,
+          "latest_rows": 4,
+          "scored": 4,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.032675,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.032675,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.032675,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "attempt_rows": 3,
+          "latest_rows": 3,
+          "scored": 3,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.515375,
+            "known_records": 3,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.515375,
+            "known_records": 3,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.515375,
+            "known_records": 3,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 3,
+          "latest_rows": 3,
+          "scored": 3,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.416202,
+            "known_records": 3,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.416202,
+            "known_records": 3,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.416202,
+            "known_records": 3,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "attempt_rows": 4,
+          "latest_rows": 4,
+          "scored": 4,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.363935,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.363935,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.363935,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 4,
+          "latest_rows": 4,
+          "scored": 4,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.248069,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.248069,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.248069,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 4,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "hcv-3ee45b15": [
+              0
+            ],
+            "hcv-4bcc180d": [
+              0
+            ],
+            "hcv-606644bd": [
+              0
+            ],
+            "hcv-d655c293": [
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 3,
+          "unique_tasks": 3,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "hcv-3ee45b15": [
+              0
+            ],
+            "hcv-606644bd": [
+              0
+            ],
+            "hcv-d655c293": [
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 4,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "hcv-3ee45b15": [
+              0
+            ],
+            "hcv-4bcc180d": [
+              0
+            ],
+            "hcv-606644bd": [
+              0
+            ],
+            "hcv-d655c293": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/local-baseline-v5/trials.jsonl",
+      "sha256": "605dcfe47d523fa5b0549da465a5488fb42b02c4fc89eee2e664bfeab13ae14a",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "fitted",
+          "attempt_rows": 22,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_all_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "report_scored_only_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "vanilla",
+          "attempt_rows": 22,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_all_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "report_scored_only_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 22,
+          "unique_tasks": 11,
+          "arm_only": 3,
+          "base_only": 4,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": -0.045454545454545456,
+          "task_cluster_bootstrap_ci95": [
+            -0.2727272727272727,
+            0.18181818181818182
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 7,
+            "assignments": 128
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              -1
+            ],
+            "om-bind-nautilus": [
+              0,
+              -1
+            ],
+            "om-clock-seconds": [
+              0,
+              0
+            ],
+            "om-gaps": [
+              0,
+              -1
+            ],
+            "om-kblayout": [
+              0,
+              0
+            ],
+            "om-super-print": [
+              1,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              -1
+            ],
+            "omh-bar-bottom": [
+              1,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              1
+            ],
+            "omh-lock-10min": [
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/omarchy-45/trials.jsonl",
+      "sha256": "7de64429513d7af0045840ff290e6f245e84b42a5431a43b80706ad7f5f4efd9",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "attempt_rows": 22,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.693394,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.693394,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.693394,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 22,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.627281,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.627281,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.627281,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 22,
+          "unique_tasks": 11,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              0
+            ],
+            "om-bind-nautilus": [
+              0,
+              0
+            ],
+            "om-clock-seconds": [
+              0,
+              0
+            ],
+            "om-gaps": [
+              0,
+              0
+            ],
+            "om-kblayout": [
+              0,
+              0
+            ],
+            "om-super-print": [
+              0,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              0
+            ],
+            "omh-bar-bottom": [
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/omarchy-heldout/trials.jsonl",
+      "sha256": "0a098f4378390d638e695b777ada93b0a2fe77047f4bc520cc26611f10ac7172",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.025266999999999998,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.025266999999999998,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.025266999999999998,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted-v2",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.025364,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.025364,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.025364,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.021712,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.021712,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.021712,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.671712,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.671712,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.671712,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted-v2",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.651882,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.651882,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.651882,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.596786,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.596786,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.596786,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.289522,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.289522,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.289522,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted-v2",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.284506,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.284506,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.284506,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 12,
+          "latest_rows": 12,
+          "scored": 12,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.220812,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.220812,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.220812,
+            "known_records": 12,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 12,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 1,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": -0.08333333333333333,
+          "task_cluster_bootstrap_ci95": [
+            -0.25,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 1,
+            "assignments": 2
+          },
+          "task_deltas": {
+            "omh-bar-bottom": [
+              0,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0,
+              -1
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted-v2",
+          "base": "vanilla",
+          "pairs": 12,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 3,
+          "paired_trial_mcnemar_p": 0.25,
+          "equal_task_weighted_success_delta": -0.25,
+          "task_cluster_bootstrap_ci95": [
+            -0.5833333333333333,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 0.5,
+            "method": "exact",
+            "nonzero_tasks": 2,
+            "assignments": 4
+          },
+          "task_deltas": {
+            "omh-bar-bottom": [
+              -1,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              -1,
+              -1,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 12,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "omh-bar-bottom": [
+              0,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted-v2",
+          "base": "vanilla",
+          "pairs": 12,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "omh-bar-bottom": [
+              0,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 12,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "omh-bar-bottom": [
+              0,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted-v2",
+          "base": "vanilla",
+          "pairs": 12,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "omh-bar-bottom": [
+              0,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/omarchy-local/trials.jsonl",
+      "sha256": "fd3918c518fcb848c46c027c0eae6b62010a6a94a654ff469facbbba7a91d40f",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "fitted-v3",
+          "attempt_rows": 25,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.0,
+            "known_records": 2,
+            "unknown_records": 23
+          },
+          "latest_all_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "report_scored_only_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "vanilla",
+          "attempt_rows": 25,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.0,
+            "known_records": 2,
+            "unknown_records": 23
+          },
+          "latest_all_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "report_scored_only_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "fitted-v3",
+          "base": "vanilla",
+          "pairs": 22,
+          "unique_tasks": 11,
+          "arm_only": 7,
+          "base_only": 4,
+          "paired_trial_mcnemar_p": 0.548828125,
+          "equal_task_weighted_success_delta": 0.13636363636363635,
+          "task_cluster_bootstrap_ci95": [
+            -0.18181818181818182,
+            0.45454545454545453
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 0.59375,
+            "method": "exact",
+            "nonzero_tasks": 7,
+            "assignments": 128
+          },
+          "task_deltas": {
+            "om-autostart": [
+              1,
+              0
+            ],
+            "om-bind-nautilus": [
+              1,
+              -1
+            ],
+            "om-clock-seconds": [
+              1,
+              0
+            ],
+            "om-gaps": [
+              0,
+              0
+            ],
+            "om-kblayout": [
+              0,
+              0
+            ],
+            "om-super-print": [
+              1,
+              0
+            ],
+            "om-theme-audit": [
+              -1,
+              -1
+            ],
+            "omh-bar-bottom": [
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              -1,
+              0
+            ],
+            "omh-lock-10min": [
+              1,
+              1
+            ],
+            "omh-unbind-only": [
+              1,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/omarchy-r2/trials.jsonl",
+      "sha256": "161bd0b2484e89b0ac7ec3c35ae67c9e36d5e3c1229e69005f9d929ba948e66a",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-fable-5-1",
+          "arm": "fitted-v3",
+          "attempt_rows": 22,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 3.800757,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 3.800757,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 3.800757,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-fable-5-1",
+          "arm": "vanilla",
+          "attempt_rows": 22,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 4.957112,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 4.957112,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 4.957112,
+            "known_records": 22,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted-v3",
+          "attempt_rows": 66,
+          "latest_rows": 66,
+          "scored": 66,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.149501,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.149501,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.149501,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 66,
+          "latest_rows": 66,
+          "scored": 66,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.136211,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.136211,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.136211,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted-v3",
+          "attempt_rows": 66,
+          "latest_rows": 66,
+          "scored": 66,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 4.181032,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 4.181032,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 4.181032,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 66,
+          "latest_rows": 66,
+          "scored": 66,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 4.857362,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 4.857362,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 4.857362,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted-v3",
+          "attempt_rows": 66,
+          "latest_rows": 66,
+          "scored": 66,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.938734,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.938734,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.938734,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 66,
+          "latest_rows": 66,
+          "scored": 66,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.568668,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.568668,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.568668,
+            "known_records": 66,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-fable-5-1",
+          "arm": "fitted-v3",
+          "base": "vanilla",
+          "pairs": 22,
+          "unique_tasks": 11,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              0
+            ],
+            "om-bind-nautilus": [
+              0,
+              0
+            ],
+            "om-clock-seconds": [
+              0,
+              0
+            ],
+            "om-gaps": [
+              0,
+              0
+            ],
+            "om-kblayout": [
+              0,
+              0
+            ],
+            "om-super-print": [
+              0,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              0
+            ],
+            "omh-bar-bottom": [
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted-v3",
+          "base": "vanilla",
+          "pairs": 66,
+          "unique_tasks": 11,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-bind-nautilus": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-clock-seconds": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-gaps": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-kblayout": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-super-print": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-bar-bottom": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted-v3",
+          "base": "vanilla",
+          "pairs": 66,
+          "unique_tasks": 11,
+          "arm_only": 4,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 0.125,
+          "equal_task_weighted_success_delta": 0.0606060606060606,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.18181818181818182
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 1,
+            "assignments": 2
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-bind-nautilus": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-clock-seconds": [
+              1,
+              1,
+              1,
+              0,
+              0,
+              1
+            ],
+            "om-gaps": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-kblayout": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-super-print": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-bar-bottom": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted-v3",
+          "base": "vanilla",
+          "pairs": 66,
+          "unique_tasks": 11,
+          "arm_only": 1,
+          "base_only": 1,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            -0.045454545454545456,
+            0.045454545454545456
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 2,
+            "assignments": 4
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-bind-nautilus": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-clock-seconds": [
+              0,
+              -1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-gaps": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            "om-kblayout": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-super-print": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-bar-bottom": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-dim-inactive": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-lock-10min": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "omh-unbind-only": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/omarchy-v1/trials.jsonl",
+      "sha256": "987f7443aba4fe6ed32b5b43a32b100de465bdd5c4f315c396b5c446745a468f",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.071506,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.071506,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.071506,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.043827,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.043827,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.043827,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.9781499999999999,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.9781499999999999,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.9781499999999999,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.515941,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.515941,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.515941,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.841714,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.841714,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.841714,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.51553,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.51553,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.51553,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 21,
+          "unique_tasks": 7,
+          "arm_only": 0,
+          "base_only": 3,
+          "paired_trial_mcnemar_p": 0.25,
+          "equal_task_weighted_success_delta": -0.14285714285714285,
+          "task_cluster_bootstrap_ci95": [
+            -0.42857142857142855,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 1,
+            "assignments": 2
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              0,
+              0
+            ],
+            "om-bind-nautilus": [
+              0,
+              0,
+              0
+            ],
+            "om-clock-seconds": [
+              -1,
+              -1,
+              -1
+            ],
+            "om-gaps": [
+              0,
+              0,
+              0
+            ],
+            "om-kblayout": [
+              0,
+              0,
+              0
+            ],
+            "om-super-print": [
+              0,
+              0,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 21,
+          "unique_tasks": 7,
+          "arm_only": 0,
+          "base_only": 2,
+          "paired_trial_mcnemar_p": 0.5,
+          "equal_task_weighted_success_delta": -0.09523809523809523,
+          "task_cluster_bootstrap_ci95": [
+            -0.2857142857142857,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 1,
+            "assignments": 2
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              0,
+              0
+            ],
+            "om-bind-nautilus": [
+              0,
+              0,
+              0
+            ],
+            "om-clock-seconds": [
+              -1,
+              -1,
+              0
+            ],
+            "om-gaps": [
+              0,
+              0,
+              0
+            ],
+            "om-kblayout": [
+              0,
+              0,
+              0
+            ],
+            "om-super-print": [
+              0,
+              0,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 21,
+          "unique_tasks": 7,
+          "arm_only": 0,
+          "base_only": 3,
+          "paired_trial_mcnemar_p": 0.25,
+          "equal_task_weighted_success_delta": -0.14285714285714285,
+          "task_cluster_bootstrap_ci95": [
+            -0.42857142857142855,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 1,
+            "assignments": 2
+          },
+          "task_deltas": {
+            "om-autostart": [
+              0,
+              0,
+              0
+            ],
+            "om-bind-nautilus": [
+              0,
+              0,
+              0
+            ],
+            "om-clock-seconds": [
+              -1,
+              -1,
+              -1
+            ],
+            "om-gaps": [
+              0,
+              0,
+              0
+            ],
+            "om-kblayout": [
+              0,
+              0,
+              0
+            ],
+            "om-super-print": [
+              0,
+              0,
+              0
+            ],
+            "om-theme-audit": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/omarchy-v2-train/trials.jsonl",
+      "sha256": "7ac495e85e7e22cebce2acb9c3394e6b326cf6c0e9c01170cb8ee910a8a40df8",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted-v2",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.070252,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.070252,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.070252,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "fitted-v2",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 1.989074,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 1.989074,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 1.989074,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted-v2",
+          "attempt_rows": 21,
+          "latest_rows": 21,
+          "scored": 21,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.830185,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.830185,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.830185,
+            "known_records": 21,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": []
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/quality-base/trials.jsonl",
+      "sha256": "97b5aec398bd2e60d7f1c02ef90ed0f102486f5feff6b101cbfbe93784bad4c3",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 33,
+          "latest_rows": 33,
+          "scored": 33,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.065926,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.065926,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.065926,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 33,
+          "latest_rows": 33,
+          "scored": 33,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 2.209409,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 2.209409,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 2.209409,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 33,
+          "latest_rows": 33,
+          "scored": 33,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.754786,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.754786,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.754786,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": []
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/quality-base-local/trials.jsonl",
+      "sha256": "1022fb4448451e0ad8283b0d2da7948f0060805edfc2ec833ab31bbfdab44b39",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "vanilla",
+          "attempt_rows": 22,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_all_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "report_scored_only_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": []
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/quality-new/trials.jsonl",
+      "sha256": "8a479da82a4f3f1ff8e272f950d5964770cd540c90891d6bac7793b34e1d7382",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 33,
+          "latest_rows": 33,
+          "scored": 33,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.065602,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.065602,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.065602,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-opus-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 33,
+          "latest_rows": 33,
+          "scored": 33,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 2.544012,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 2.544012,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 2.544012,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 33,
+          "latest_rows": 33,
+          "scored": 33,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.7142580000000001,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.7142580000000001,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.7142580000000001,
+            "known_records": 33,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": []
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/quality-new-local/trials.jsonl",
+      "sha256": "8ea1d909a1a8ec8fd54f702aa75f823cd20249e2bb05aca8a0cee9ae3843f1a5",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "qwen3.5-9b-32k",
+          "arm": "vanilla",
+          "attempt_rows": 22,
+          "latest_rows": 22,
+          "scored": 22,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_all_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "report_scored_only_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 22
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": []
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/smoke/trials.jsonl",
+      "sha256": "2a71f2389b0f387d7c7e90a9377ce17bc3a4694bde270d04813bab0c97fdb0df",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "attempt_rows": 2,
+          "latest_rows": 2,
+          "scored": 2,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.005449000000000001,
+            "known_records": 2,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.005449000000000001,
+            "known_records": 2,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.005449000000000001,
+            "known_records": 2,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 2,
+          "latest_rows": 2,
+          "scored": 2,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.003959,
+            "known_records": 2,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.003959,
+            "known_records": 2,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.003959,
+            "known_records": 2,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-haiku-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 2,
+          "unique_tasks": 2,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "om-bind-nautilus": [
+              0
+            ],
+            "om-theme-audit": [
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/parker/Work/harness-0/runs/td-v1/trials.jsonl",
+      "sha256": "0dcf93784983d9161a141efb2fd06e41ce0349796b18266ac5090662ce9e1936",
+      "malformed": [],
+      "groups": [
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "attempt_rows": 4,
+          "latest_rows": 4,
+          "scored": 4,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.410284,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.410284,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.410284,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        },
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "vanilla",
+          "attempt_rows": 4,
+          "latest_rows": 4,
+          "scored": 4,
+          "unscored": 0,
+          "all_attempts_usd": {
+            "known_sum": 0.5143340000000001,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_all_usd": {
+            "known_sum": 0.5143340000000001,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "report_scored_only_usd": {
+            "known_sum": 0.5143340000000001,
+            "known_records": 4,
+            "unknown_records": 0
+          },
+          "latest_unscored_usd": {
+            "known_sum": null,
+            "known_records": 0,
+            "unknown_records": 0
+          },
+          "latest_unscored_wall_s": null
+        }
+      ],
+      "comparisons": [
+        {
+          "model": "claude-sonnet-5-5",
+          "arm": "fitted",
+          "base": "vanilla",
+          "pairs": 4,
+          "unique_tasks": 4,
+          "arm_only": 0,
+          "base_only": 0,
+          "paired_trial_mcnemar_p": 1.0,
+          "equal_task_weighted_success_delta": 0.0,
+          "task_cluster_bootstrap_ci95": [
+            0.0,
+            0.0
+          ],
+          "task_sign_flip_sensitivity": {
+            "p": 1.0,
+            "method": "exact",
+            "nonzero_tasks": 0
+          },
+          "task_deltas": {
+            "td-112f92cc": [
+              0
+            ],
+            "td-a5ace5bc": [
+              0
+            ],
+            "td-b4a7caf5": [
+              0
+            ],
+            "td-fe457d34": [
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

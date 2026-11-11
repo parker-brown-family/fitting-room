@@ -1,0 +1,32 @@
+{
+  "format": 1,
+  "kind": "briefing-calls",
+  "calls": [
+    {
+      "id": "call-run-experiments-without-paid-model-calls",
+      "at": "2026-11-11T01:13Z",
+      "title": "Run experiments without paid model calls",
+      "context": null,
+      "chose": "Use deterministic probes and isolated hosts; leave production unchanged",
+      "because": "The user has no API budget and asked for executable evidence",
+      "passed_over": [],
+      "undo": null,
+      "door": "two-way",
+      "evidence": [],
+      "conflicts": [],
+      "under": null,
+      "judgement": {
+        "slot": "{System 1 JUDGEMENT Surface Placeholder}",
+        "filled_by": "agent",
+        "uncertainty": "low",
+        "taste": "low",
+        "posture": "relaxed",
+        "posture_declared": true,
+        "outcome": "carry-on",
+        "reasons": []
+      },
+      "status": "open",
+      "verdict": null
+    }
+  ]
+}
