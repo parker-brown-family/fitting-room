@@ -1,0 +1,37 @@
+[
+  {
+    "finding": "secret-masking",
+    "title": "security: Close repository secret-mask scan gaps",
+    "url": "https://github.com/parker-brown-family/fitting-room/issues/1"
+  },
+  {
+    "finding": "oracle-integrity",
+    "title": "fix: Preserve evaluation checker integrity during agent trials",
+    "url": "https://github.com/parker-brown-family/fitting-room/issues/2"
+  },
+  {
+    "finding": "undo-cache",
+    "title": "fix: Detect undo changes when file timestamps are preserved",
+    "url": "https://github.com/parker-brown-family/fitting-room/issues/3"
+  },
+  {
+    "finding": "trace-completeness",
+    "title": "fix: Distinguish valid trace prefixes from anchored completeness",
+    "url": "https://github.com/parker-brown-family/fitting-room/issues/4"
+  },
+  {
+    "finding": "unscored-cost",
+    "title": "fix: Include recorded unscored spend in evaluation accounting",
+    "url": "https://github.com/parker-brown-family/fitting-room/issues/5"
+  },
+  {
+    "finding": "nested-git",
+    "title": "security: Track the documented nested Git persistence boundaries",
+    "url": "https://github.com/parker-brown-family/fitting-room/issues/6"
+  },
+  {
+    "finding": "empty-directories",
+    "title": "feat: Make the empty-directory scope of tree undo explicit",
+    "url": "https://github.com/parker-brown-family/fitting-room/issues/7"
+  }
+]

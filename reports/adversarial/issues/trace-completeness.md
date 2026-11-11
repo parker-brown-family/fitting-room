@@ -25,3 +25,9 @@ an absent anchor must remain unverified rather than complete.
 
 A reader can distinguish a valid open/crashed prefix, a complete anchored trace,
 and a closed trace whose events were removed. Preserve useful crash recovery.
+
+## Context
+
+Research evidence and executable probes: https://github.com/parker-brown-family/fitting-room/tree/ecdc6fa/reports/adversarial
+
+Original tested production revision: de2210815b723567cb280aca0e28112ba69ddc31.

@@ -28,3 +28,9 @@ a substitute for the sandbox boundary this probe measures.
 The canaries remain inaccessible through the complete tool path, including
 late-created and skipped-directory cases, while ordinary project files remain
 readable. Add the reproducer to the production regression suite.
+
+## Context
+
+Research evidence and executable probes: https://github.com/parker-brown-family/fitting-room/tree/ecdc6fa/reports/adversarial
+
+Original tested production revision: de2210815b723567cb280aca0e28112ba69ddc31.

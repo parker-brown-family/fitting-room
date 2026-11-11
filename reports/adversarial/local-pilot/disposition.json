@@ -1,0 +1,8 @@
+{
+  "schema": "h0-pilot-abort-v1",
+  "reason": "Trigger setup used text instead of note; aborted before accepting any trial result.",
+  "completed_records": 0,
+  "partial_trace": "00-precedence-lessons.jsonl",
+  "paid_model_calls": 0,
+  "source_integrity_matches": true
+}

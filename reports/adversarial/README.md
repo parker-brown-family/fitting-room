@@ -125,3 +125,18 @@ cannot estimate general benefit. This pilot is a working apparatus check. The
 initial `local-pilot` directory preserves an aborted setup with a trigger-field
 mistake; its incomplete trace is not a completed trial. `local-pilot-v2` uses
 the corrected `note` field and checks that it injects before any model request.
+
+The corrected run stopped at its 30-minute execution ceiling. Seven trials
+completed: three passed and four failed. One was interrupted and is unscored;
+two were never started. [The disposition](local-pilot-v2/disposition.json)
+preserves those distinctions. The local server was shared, and another loaded
+model was observed during the run. The 10.2–601.8 second completed-trial range
+cannot establish a fitting-speed advantage. Among the failures, two retained
+false/zero/empty-string values but mishandled an explicitly present null; another
+fixed interval merging while still mutating the caller's input.
+
+The initial aborted source has been recovered byte-for-byte and checked against
+its original saved hash in `local-pilot/source.py`. `finalize_pilot.py` records
+the stopped pilot without rescoring partial work or replacing missing values
+with failure. No local pilot process remains; the shared Ollama service is left
+alone.

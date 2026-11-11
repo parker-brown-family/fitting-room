@@ -24,3 +24,9 @@ must remain unknown, and duplicate snapshot archives must not be summed.
 
 Reports preserve scored-only efficiency, known total expenditure and unknown
 cost counts as distinct readings. Cover unscored attempts and retries.
+
+## Context
+
+Research evidence and executable probes: https://github.com/parker-brown-family/fitting-room/tree/ecdc6fa/reports/adversarial
+
+Original tested production revision: de2210815b723567cb280aca0e28112ba69ddc31.

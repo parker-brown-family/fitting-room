@@ -1,0 +1,69 @@
+{
+  "schema": "h0-local-pilot-v1",
+  "model": "omarchy-4b-base:latest",
+  "model_digest": "2c99d6764a1daf644c122a221eed51954dd43283bc6c5b7640980aea96b6ef5e",
+  "provider_url": "http://127.0.0.1:11434/v1",
+  "arms": [
+    "none",
+    "map",
+    "rules",
+    "lessons",
+    "full"
+  ],
+  "tasks": [
+    {
+      "id": "precedence",
+      "file": "engine/settings/resolve.py",
+      "prompt": "A per-user setting of false or zero is replaced by the site's value. Fix configuration precedence so a supplied user value is retained, including false, zero, and an empty string. A key absent from user settings should use the site value. Keep the public function signature.",
+      "broken": "def resolve(user, site, key):\n    return user.get(key) or site.get(key)\n",
+      "oracle": "import json; from engine.settings.resolve import resolve; print(json.dumps([resolve({'x':False},{'x':True},'x'),resolve({'x':0},{'x':9},'x'),resolve({'x':''},{'x':'a'},'x'),resolve({},{'x':7},'x'),resolve({'x':None},{'x':9},'x')]))",
+      "expected": [
+        false,
+        0,
+        "",
+        7,
+        null
+      ]
+    },
+    {
+      "id": "intervals",
+      "file": "engine/windows/combine.py",
+      "prompt": "The scheduling service loses a long reservation when a shorter overlapping reservation arrives. Correct reservation merging. Intervals are half-open integer pairs; touching endpoints are contiguous and should merge. Return a sorted list without mutating the caller's list. Empty input should return an empty list.",
+      "broken": "def merge(intervals):\n    intervals.sort()\n    out=[]\n    for start,end in intervals:\n        if out and start <= out[-1][1]:\n            out[-1]=(out[-1][0],end)\n        else:\n            out.append((start,end))\n    return out\n",
+      "oracle": "import json; from engine.windows.combine import merge; x=[(5,8),(1,10),(2,3),(10,12)]; old=x.copy(); print(json.dumps([merge(x), x==old, merge([]), merge([(4,5),(1,2)]), merge([(0,10),(2,4),(6,8)])]))",
+      "expected": [
+        [
+          [
+            1,
+            12
+          ]
+        ],
+        true,
+        [],
+        [
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            5
+          ]
+        ],
+        [
+          [
+            0,
+            10
+          ]
+        ]
+      ]
+    }
+  ],
+  "max_turns": 6,
+  "max_tokens": 2048,
+  "seed": 20261110,
+  "confirmatory": false,
+  "repetitions": 1,
+  "limits": "Two authored toy tasks, one trial per arm, shared local server; author saw tasks and fitting. Cannot estimate general benefit or frontier ceiling. First inference may include model load. No cache control.",
+  "paid_api_calls": 0
+}

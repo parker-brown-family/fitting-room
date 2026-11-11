@@ -1,0 +1,91 @@
+{
+  "schema": "h0-pilot-disposition-v1",
+  "reason": "execution-time-limit",
+  "registered_cases": 10,
+  "completed_records": 7,
+  "cases": [
+    {
+      "task": "precedence",
+      "arm": "none",
+      "status": "failed",
+      "passed": false,
+      "wall_s": 10.203,
+      "trace": "02-precedence-none.jsonl"
+    },
+    {
+      "task": "precedence",
+      "arm": "map",
+      "status": "failed",
+      "passed": false,
+      "wall_s": 176.139,
+      "trace": "01-precedence-map.jsonl"
+    },
+    {
+      "task": "precedence",
+      "arm": "rules",
+      "status": "not-started",
+      "passed": null,
+      "wall_s": null,
+      "trace": null
+    },
+    {
+      "task": "precedence",
+      "arm": "lessons",
+      "status": "passed",
+      "passed": true,
+      "wall_s": 219.491,
+      "trace": "00-precedence-lessons.jsonl"
+    },
+    {
+      "task": "precedence",
+      "arm": "full",
+      "status": "not-started",
+      "passed": null,
+      "wall_s": null,
+      "trace": null
+    },
+    {
+      "task": "intervals",
+      "arm": "none",
+      "status": "failed",
+      "passed": false,
+      "wall_s": 601.762,
+      "trace": "06-intervals-none.jsonl"
+    },
+    {
+      "task": "intervals",
+      "arm": "map",
+      "status": "passed",
+      "passed": true,
+      "wall_s": 68.699,
+      "trace": "05-intervals-map.jsonl"
+    },
+    {
+      "task": "intervals",
+      "arm": "rules",
+      "status": "interrupted-unscored",
+      "passed": null,
+      "wall_s": null,
+      "trace": "07-intervals-rules.jsonl"
+    },
+    {
+      "task": "intervals",
+      "arm": "lessons",
+      "status": "failed",
+      "passed": false,
+      "wall_s": 40.071,
+      "trace": "04-intervals-lessons.jsonl"
+    },
+    {
+      "task": "intervals",
+      "arm": "full",
+      "status": "passed",
+      "passed": true,
+      "wall_s": 37.459,
+      "trace": "03-intervals-full.jsonl"
+    }
+  ],
+  "preregistration_sha256": "a804ada44bbd18bf50afbca97d860ca006d6ebe0adf2fe204491f193e1681561",
+  "paid_model_calls": 0,
+  "limits": "Partial work is unscored; absent cases are not started. Shared local-server load/cache was uncontrolled. This pilot cannot establish a general success or latency advantage."
+}

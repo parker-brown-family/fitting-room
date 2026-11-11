@@ -1,0 +1,8 @@
+{
+  "model": "omarchy-4b-base:latest",
+  "before_digest": "2c99d6764a1daf644c122a221eed51954dd43283bc6c5b7640980aea96b6ef5e",
+  "after_digest": "2c99d6764a1daf644c122a221eed51954dd43283bc6c5b7640980aea96b6ef5e",
+  "matches_initial_digest": true,
+  "source_sha256_matches": true,
+  "exclusive_server": false
+}

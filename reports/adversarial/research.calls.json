@@ -27,6 +27,32 @@
       },
       "status": "open",
       "verdict": null
+    },
+    {
+      "id": "call-bound-the-exploratory-local-pilot",
+      "at": "2026-11-11T01:46Z",
+      "title": "Bound the exploratory local pilot",
+      "context": null,
+      "chose": "Ten trials in one 30-minute run; preserve incomplete cases as unscored",
+      "because": "A shared local server cannot establish stable latency from an open-ended pilot",
+      "passed_over": [],
+      "undo": null,
+      "door": "two-way",
+      "evidence": [],
+      "conflicts": [],
+      "under": null,
+      "judgement": {
+        "slot": "{System 1 JUDGEMENT Surface Placeholder}",
+        "filled_by": "agent",
+        "uncertainty": "low",
+        "taste": "low",
+        "posture": "relaxed",
+        "posture_declared": true,
+        "outcome": "carry-on",
+        "reasons": []
+      },
+      "status": "open",
+      "verdict": null
     }
   ]
 }
